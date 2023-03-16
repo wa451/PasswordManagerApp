@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PasswordManager</string>
+    <string name="add">追加</string>
+    <string name="category">カテゴリー</string>
+    <string name="title">タイトル</string>
+    <string name="save">保存</string>
+</resources>
