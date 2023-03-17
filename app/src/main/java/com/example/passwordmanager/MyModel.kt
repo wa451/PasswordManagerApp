@@ -9,17 +9,16 @@ open class MyModel:RealmObject() {
     var id:Long =0
     var category:String =""
     var title:String =""
-    var items: RealmList<PasswordItem> = RealmList()
+    var name1:String =""
+    var password1:String =""
+    var name2:String =""
+    var password2:String =""
+    var name3:String =""
+    var password3:String =""
+    var name4:String =""
+    var password4:String =""
+    var name5:String =""
+    var password5:String =""
+    var name6:String =""
+    var password6:String =""
 }
-open class PasswordItem : RealmObject() {
-    var name: String = ""
-    var password: String = ""
-}
-//val myModel = MyModel()
-//myModel.items.add(PasswordItem(20, "John"))
-//myModel.items.add(PasswordItem(25, "Mary"))
-//myModel.items.add(PasswordItem(30, "Bob"))
-//
-//realm.executeTransaction { r ->
-//    r.insertOrUpdate(myModel)
-//}
