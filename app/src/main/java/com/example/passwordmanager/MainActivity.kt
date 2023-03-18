@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         btnNew.setOnClickListener {
             val intent = Intent(this,EditActivity::class.java)
             startActivity(intent)
+
         }
     }
     override fun onStart() {

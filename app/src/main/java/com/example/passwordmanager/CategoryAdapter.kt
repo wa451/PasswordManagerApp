@@ -1,5 +1,6 @@
 package com.example.passwordmanager
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,5 +21,11 @@ class CategoryAdapter(realmResults: RealmResults<MyModel>):RecyclerView.Adapter<
     override fun onBindViewHolder(holder: ViewHolderCategory, position: Int) {
         val myModel = rResults[position]//position番目の結果を取得
         holder.tvCategory.text = myModel?.category.toString() //position番目のnameを代入
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context,SubActivity::class.java) //it はRecyclerViewで定義されたレイアウトView
+            intent.putExtra("category", myModel!!.category)
+            it.context.startActivity(intent)
+        }
     }
 }
