@@ -21,12 +21,14 @@ class ShowAdapter(realmResults: RealmResults<MyModel>): RecyclerView.Adapter<Vie
         val myModel = rResults[position]//position番目の結果を取得
         val tvName = listOf(holder.showName1, holder.showName2, holder.showName3, holder.showName4, holder.showName5, holder.showName6)
         val tvPass = listOf(holder.showPass1, holder.showPass2, holder.showPass3, holder.showPass4, holder.showPass5, holder.showPass6)
+//        val dividers = listOf(holder.divider1, holder.divider2, holder.divider3, holder.divider4, holder.divider5, holder.divider6)
         val nameList = listOf(myModel?.name1.toString(), myModel?.name2.toString(), myModel?.name3.toString(), myModel?.name4.toString(), myModel?.name5.toString(), myModel?.name6.toString())
         val passList = listOf(myModel?.password1.toString(), myModel?.password2.toString(), myModel?.password3.toString(), myModel?.password4.toString(), myModel?.password5.toString(), myModel?.password6.toString())
         for (i in 0..tvName.size-1){
             if (nameList[i] == ""){
                 tvName[i].text = ""
                 tvPass[i].text = ""
+//                dividers[i].height = 0
             }else {
                 tvName[i].text = nameList[i]
                 tvPass[i].text = passList[i]

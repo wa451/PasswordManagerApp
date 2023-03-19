@@ -17,5 +17,11 @@ class ViewHolderShow(v: View): RecyclerView.ViewHolder(v) {
     var showPass5 = v.findViewById<TextView>(R.id.showPass5)
     var showName6 = v.findViewById<TextView>(R.id.showName6)
     var showPass6 = v.findViewById<TextView>(R.id.showPass6)
+//    var divider1 = v.findViewById<View>(R.id.divider1)
+//    var divider2 = v.findViewById<View>(R.id.divider2)
+//    var divider3 = v.findViewById<View>(R.id.divider3)
+//    var divider4 = v.findViewById<View>(R.id.divider4)
+//    var divider5 = v.findViewById<View>(R.id.divider5)
+//    var divider6 = v.findViewById<View>(R.id.divider6)
 
 }

@@ -6,4 +6,6 @@
     <string name="save">保存</string>
     <string name="name">名称</string>
     <string name="pass">パスワード</string>
+    <string name="edit">編集</string>
+    <string name="delete">削除</string>
 </resources>

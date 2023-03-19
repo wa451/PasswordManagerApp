@@ -2,6 +2,7 @@ package com.example.passwordmanager
 
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -39,6 +40,7 @@ class EditActivity : AppCompatActivity() {
         val btnSave: Button = findViewById(R.id.btnSave)
         val parentLayout: ConstraintLayout = findViewById(R.id.parent_layout);
         realm= Realm.getDefaultInstance()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btnSave.setOnClickListener {
             //上書き用の変数を用意
@@ -117,6 +119,12 @@ class EditActivity : AppCompatActivity() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home){
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
     override fun onDestroy() {
         super.onDestroy()
         realm.close()

@@ -2,6 +2,8 @@ package com.example.passwordmanager
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.Realm
@@ -17,6 +19,7 @@ class ShowActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show)
 
         realm= Realm.getDefaultInstance()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onStart() {
@@ -36,6 +39,16 @@ class ShowActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home){
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_options_menu_list, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
     override fun onDestroy() {
         super.onDestroy()
         realm.close()

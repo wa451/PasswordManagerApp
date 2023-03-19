@@ -3,6 +3,7 @@ package com.example.passwordmanager
 import android.icu.text.CaseMap.Title
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.Realm
@@ -18,6 +19,8 @@ class SubActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sub)
 
         realm= Realm.getDefaultInstance()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onStart() {
@@ -35,6 +38,13 @@ class SubActivity : AppCompatActivity() {
         //縦並びに配置しますよ
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home){
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroy() {
