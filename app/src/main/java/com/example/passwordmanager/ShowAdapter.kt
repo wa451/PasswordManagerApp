@@ -1,10 +1,7 @@
 package com.example.passwordmanager
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.*
 import androidx.recyclerview.widget.RecyclerView
-import io.realm.RealmResults
-import org.w3c.dom.NameList
 
 class ShowAdapter(nameList: Array<String>, passList: Array<String>): RecyclerView.Adapter<ViewHolderShow>() {
     val nameList: Array<String> = nameList
@@ -21,12 +18,12 @@ class ShowAdapter(nameList: Array<String>, passList: Array<String>): RecyclerVie
 
     override fun onBindViewHolder(holder: ViewHolderShow, position: Int) {
             if (!nameList[position].isNullOrEmpty()){
-                holder.showName1.text = nameList[position]
-                holder.showPass1.text = passList[position]
+                holder.showName.text = nameList[position] + " :"
+                holder.showPass.text = passList[position]
 //                dividers[i].height = 0
             }else {
-                holder.showName1.text = ""
-                holder.showPass1.text = ""
-        }
+                holder.showName.text = ""
+                holder.showPass.text = ""
+            }
     }
 }
