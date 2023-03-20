@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -23,24 +24,39 @@ class EditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
 
-        val etCategory: EditText = findViewById(R.id.etCategory)
-        val etTitle: EditText = findViewById(R.id.etTitle)
-        val etName1: EditText = findViewById(R.id.etName1)
-        val etPass1: EditText = findViewById(R.id.etPass1)
-        val etName2: EditText = findViewById(R.id.etName2)
-        val etPass2: EditText = findViewById(R.id.etPass2)
-        val etName3: EditText = findViewById(R.id.etName3)
-        val etPass3: EditText = findViewById(R.id.etPass3)
-        val etName4: EditText = findViewById(R.id.etName4)
-        val etPass4: EditText = findViewById(R.id.etPass4)
-        val etName5: EditText = findViewById(R.id.etName5)
-        val etPass5: EditText = findViewById(R.id.etPass5)
-        val etName6: EditText = findViewById(R.id.etName6)
-        val etPass6: EditText = findViewById(R.id.etPass6)
+        val etCategory: TextView = findViewById(R.id.etCategory)
+        val etTitle: TextView = findViewById(R.id.etTitle)
+        val etName1: TextView = findViewById(R.id.etName1)
+        val etPass1: TextView = findViewById(R.id.etPass1)
+        val etName2: TextView = findViewById(R.id.etName2)
+        val etPass2: TextView = findViewById(R.id.etPass2)
+        val etName3: TextView = findViewById(R.id.etName3)
+        val etPass3: TextView = findViewById(R.id.etPass3)
+        val etName4: TextView = findViewById(R.id.etName4)
+        val etPass4: TextView = findViewById(R.id.etPass4)
+        val etName5: TextView = findViewById(R.id.etName5)
+        val etPass5: TextView = findViewById(R.id.etPass5)
+        val etName6: TextView = findViewById(R.id.etName6)
+        val etPass6: TextView = findViewById(R.id.etPass6)
         val btnSave: Button = findViewById(R.id.btnSave)
-        val parentLayout: ConstraintLayout = findViewById(R.id.parent_layout);
+
+        val getId = intent.getLongExtra("ID",0L)
         realm= Realm.getDefaultInstance()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        if(getId>0){
+            //既存のレコードが存在するので、一致するidを取得（して表示）
+            val myModelResult = realm.where<MyModel>()
+                .equalTo("id",getId).findFirst()
+            etCategory.text = myModelResult?.category.toString()
+            etTitle.text = myModelResult?.title.toString()
+            etName1.text = myModelResult?.name1.toString()
+            etPass1.text = myModelResult?.password1.toString()
+            etName2.text = myModelResult?.name2.toString()
+            etPass2.text = myModelResult?.password2.toString()
+            etName3.text = myModelResult?.name3.toString()
+            etPass3.text = myModelResult?.password3.toString()
+        }
 
         btnSave.setOnClickListener {
             //上書き用の変数を用意
@@ -81,38 +97,72 @@ class EditActivity : AppCompatActivity() {
 //            val nameList = listOf(name1, name2, name3, name4, name5, name6)
 //            val passwordList = listOf(password1, password2, password3, password4, password5, password6)
 
-            realm.executeTransaction {
-                val currentId = realm.where<MyModel>().max("id")//現時点のid(の最高値)を取得
-                val nextId =(currentId?.toLong() ?:0L)+1L //最高値に１を追加（最高値が０なら１に）←行を追加するイメージ
-                //モデルクラス(nextId番目)に値をセット
-                val myModel =realm.createObject<MyModel>(nextId)
-                myModel.category = category
-                myModel.title = title
-                if (!name1.isNullOrEmpty() and !password1.isNullOrEmpty()){
-                    myModel.name1 = name1
-                    myModel.password1 = password1
+            if (getId == 0L){
+                realm.executeTransaction {
+                    val currentId = realm.where<MyModel>().max("id")//現時点のid(の最高値)を取得
+                    val nextId =(currentId?.toLong() ?:0L)+1L //最高値に１を追加（最高値が０なら１に）←行を追加するイメージ
+                    //モデルクラス(nextId番目)に値をセット
+                    val myModel =realm.createObject<MyModel>(nextId)
+                    myModel.category = category
+                    myModel.title = title
+                    if (!name1.isNullOrEmpty() and !password1.isNullOrEmpty()){
+                        myModel.name1 = name1
+                        myModel.password1 = password1
+                    }
+                    if (!name2.isNullOrEmpty() and !password2.isNullOrEmpty()){
+                        myModel.name2 = name2
+                        myModel.password2 = password2
+                    }
+                    if (!name3.isNullOrEmpty() and !password3.isNullOrEmpty()){
+                        myModel.name3 = name3
+                        myModel.password3 = password3
+                    }
+                    if (!name4.isNullOrEmpty() and !password4.isNullOrEmpty()){
+                        myModel.name4 = name4
+                        myModel.password4 = password4
+                    }
+                    if (!name5.isNullOrEmpty() and !password5.isNullOrEmpty()){
+                        myModel.name5 = name5
+                        myModel.password5 = password5
+                    }
+                    if (!name6.isNullOrEmpty() and !password6.isNullOrEmpty()){
+                        myModel.name6 = name6
+                        myModel.password6 = password6
+                    }
                 }
-                if (!name2.isNullOrEmpty() and !password2.isNullOrEmpty()){
-                    myModel.name2 = name2
-                    myModel.password2 = password2
-                }
-                if (!name3.isNullOrEmpty() and !password3.isNullOrEmpty()){
-                    myModel.name3 = name3
-                    myModel.password3 = password3
-                }
-                if (!name4.isNullOrEmpty() and !password4.isNullOrEmpty()){
-                    myModel.name4 = name4
-                    myModel.password4 = password4
-                }
-                if (!name5.isNullOrEmpty() and !password5.isNullOrEmpty()){
-                    myModel.name5 = name5
-                    myModel.password5 = password5
-                }
-                if (!name6.isNullOrEmpty() and !password6.isNullOrEmpty()){
-                    myModel.name6 = name6
-                    myModel.password6 = password6
+            }else{
+                realm.executeTransaction {
+                    val myModel = realm.where<MyModel>()
+                        .equalTo("id",getId).findFirst()
+                    myModel?.category = category
+                    myModel?.title = title
+                    if (!name1.isNullOrEmpty() and !password1.isNullOrEmpty()){
+                        myModel?.name1 = name1
+                        myModel?.password1 = password1
+                    }
+                    if (!name2.isNullOrEmpty() and !password2.isNullOrEmpty()){
+                        myModel?.name2 = name2
+                        myModel?.password2 = password2
+                    }
+                    if (!name3.isNullOrEmpty() and !password3.isNullOrEmpty()){
+                        myModel?.name3 = name3
+                        myModel?.password3 = password3
+                    }
+                    if (!name4.isNullOrEmpty() and !password4.isNullOrEmpty()){
+                        myModel?.name4 = name4
+                        myModel?.password4 = password4
+                    }
+                    if (!name5.isNullOrEmpty() and !password5.isNullOrEmpty()){
+                        myModel?.name5 = name5
+                        myModel?.password5 = password5
+                    }
+                    if (!name6.isNullOrEmpty() and !password6.isNullOrEmpty()){
+                        myModel?.name6 = name6
+                        myModel?.password6 = password6
+                    }
                 }
             }
+
 
             Toast.makeText(applicationContext,"保存しました",Toast.LENGTH_SHORT).show()
             finish()
