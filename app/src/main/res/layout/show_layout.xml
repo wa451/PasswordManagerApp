@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/showPass"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,12 +24,13 @@
         android:minHeight="48dp"
         android:text="TextView"
         android:textIsSelectable="true"
-        android:textSize="34sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/showName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/showName"
-        app:layout_constraintTop_toTopOf="@+id/showName" />
+        app:layout_constraintTop_toTopOf="@+id/showName"
+        android:gravity="center_vertical"/>
 
     <View
         android:id="@+id/divider1"

@@ -105,30 +105,18 @@ class EditActivity : AppCompatActivity() {
                     val myModel =realm.createObject<MyModel>(nextId)
                     myModel.category = category
                     myModel.title = title
-                    if (!name1.isNullOrEmpty() and !password1.isNullOrEmpty()){
-                        myModel.name1 = name1
-                        myModel.password1 = password1
-                    }
-                    if (!name2.isNullOrEmpty() and !password2.isNullOrEmpty()){
-                        myModel.name2 = name2
-                        myModel.password2 = password2
-                    }
-                    if (!name3.isNullOrEmpty() and !password3.isNullOrEmpty()){
-                        myModel.name3 = name3
-                        myModel.password3 = password3
-                    }
-                    if (!name4.isNullOrEmpty() and !password4.isNullOrEmpty()){
-                        myModel.name4 = name4
-                        myModel.password4 = password4
-                    }
-                    if (!name5.isNullOrEmpty() and !password5.isNullOrEmpty()){
-                        myModel.name5 = name5
-                        myModel.password5 = password5
-                    }
-                    if (!name6.isNullOrEmpty() and !password6.isNullOrEmpty()){
-                        myModel.name6 = name6
-                        myModel.password6 = password6
-                    }
+                    myModel.name1 = name1
+                    myModel.password1 = password1
+                    myModel.name2 = name2
+                    myModel.password2 = password2
+                    myModel.name3 = name3
+                    myModel.password3 = password3
+                    myModel.name4 = name4
+                    myModel.password4 = password4
+                    myModel.name5 = name5
+                    myModel.password5 = password5
+                    myModel.name6 = name6
+                    myModel.password6 = password6
                 }
             }else{
                 realm.executeTransaction {
@@ -136,30 +124,18 @@ class EditActivity : AppCompatActivity() {
                         .equalTo("id",getId).findFirst()
                     myModel?.category = category
                     myModel?.title = title
-                    if (!name1.isNullOrEmpty() and !password1.isNullOrEmpty()){
-                        myModel?.name1 = name1
-                        myModel?.password1 = password1
-                    }
-                    if (!name2.isNullOrEmpty() and !password2.isNullOrEmpty()){
-                        myModel?.name2 = name2
-                        myModel?.password2 = password2
-                    }
-                    if (!name3.isNullOrEmpty() and !password3.isNullOrEmpty()){
-                        myModel?.name3 = name3
-                        myModel?.password3 = password3
-                    }
-                    if (!name4.isNullOrEmpty() and !password4.isNullOrEmpty()){
-                        myModel?.name4 = name4
-                        myModel?.password4 = password4
-                    }
-                    if (!name5.isNullOrEmpty() and !password5.isNullOrEmpty()){
-                        myModel?.name5 = name5
-                        myModel?.password5 = password5
-                    }
-                    if (!name6.isNullOrEmpty() and !password6.isNullOrEmpty()){
-                        myModel?.name6 = name6
-                        myModel?.password6 = password6
-                    }
+                    myModel?.name1 = name1
+                    myModel?.password1 = password1
+                    myModel?.name2 = name2
+                    myModel?.password2 = password2
+                    myModel?.name3 = name3
+                    myModel?.password3 = password3
+                    myModel?.name4 = name4
+                    myModel?.password4 = password4
+                    myModel?.name5 = name5
+                    myModel?.password5 = password5
+                    myModel?.name6 = name6
+                    myModel?.password6 = password6
                 }
             }
 
