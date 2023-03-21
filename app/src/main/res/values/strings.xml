@@ -8,4 +8,7 @@
     <string name="pass">パスワード</string>
     <string name="edit">編集</string>
     <string name="delete">削除</string>
+    <string name="confirm">削除しますか？</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
 </resources>
